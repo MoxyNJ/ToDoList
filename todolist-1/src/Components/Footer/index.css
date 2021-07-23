@@ -1,0 +1,9 @@
+.footBox {
+  height: 50px;
+  line-height: 60px;
+  padding: 0 5px;
+}
+.deleteButton {
+  float: right;
+  margin-top: 15px;
+}
