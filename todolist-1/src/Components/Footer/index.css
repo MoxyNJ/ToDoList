@@ -1,7 +1,7 @@
 .footBox {
   height: 50px;
-  line-height: 60px;
-  padding: 0 5px;
+  line-height: 60px !important;
+  padding: 0 5px !important;
 }
 .deleteButton {
   float: right;

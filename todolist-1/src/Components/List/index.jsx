@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import Item from "../Item";
-import "./index.css";
 
 export default class List extends Component {
   render() {
+    const { todoArr, updateItem, deleteItem } = this.props;
     return (
-      <div>
-        <Item />
-        <Item />
-        <Item />
+      <div className="list">
+        {todoArr.map((cur) => {
+          return (
+            <Item
+              key={cur.id}
+              {...cur}
+              updateItem={updateItem}
+              deleteItem={deleteItem}
+            />
+          );
+        })}
       </div>
     );
   }
