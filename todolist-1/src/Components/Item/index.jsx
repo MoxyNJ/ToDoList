@@ -5,10 +5,6 @@ import "./index.css";
 export default class Item extends Component {
   state = { mouse: false };
 
-  mouse = (event) => {
-    console.log(event.target);
-  };
-
   handleMouse = (event) => {
     if (event.type === "mouseleave") {
       this.setState({ mouse: false });

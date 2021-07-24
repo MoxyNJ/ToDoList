@@ -32,7 +32,7 @@ Components下，有Header、Footer、List、Item四个组件。
 
 ## 3 Item中，显示/隐藏某元素
 
-![截屏2021-07-23 下午7.53.13](../Library/Application Support/typora-user-images/截屏2021-07-23 下午7.53.13.png)
+![截屏2021-07-24 下午7.56.41](README/截屏2021-07-24 下午7.56.41.png)
 
 1.   在组件中，设置一个 flag： `state={mouse: false}`。
 2.   当鼠标移动到/移动出某个选项中，触发 OnMouseEnter 和 OnMouseLeave 事件，此时加入时间回调，修改 flag 为 true/false。
@@ -72,11 +72,27 @@ Components下，有Header、Footer、List、Item四个组件。
 
 
 
+#### 尚不明确：使用 Antd 的 input组件后，无法利用event.terget.value="" 清空内容。
+
+-   解决方案，其实没解决，利用 ref 获取input地址，然后用 this.inputValue.state.value="" 清空。
+
+![截屏2021-07-24 下午7.56.00](README/截屏2021-07-24 下午7.56.00.png)
 
 
 
+#### 在 Footer 计算已完成的总数：
 
+利用 myArray.reduce()方法。该方法会对每个元素执行一次回调函数。可以利用该方法对一组数组中所有元素值求和。方法的每次回调的 return值，都会作为 prevValue 传递给下一个回调函数。最后一个回调函数执行后，会把结果return。
 
+ 
+
+#### 如何实现当事件全部勾选，最下放 Footer 的勾选框也会跟着勾选？
+
+ <img src="README/截屏2021-07-24 下午8.32.52.png" alt="截屏2021-07-24 下午8.32.52" style="zoom:50%;" />
+
+在最下方的 Checkbox 中，checked 判断一下 “已完成” 和 “一共有” 是否相等即可。
+
+`checked={finished === total && total !== 0}`
 
 
 
@@ -85,4 +101,12 @@ Components下，有Header、Footer、List、Item四个组件。
 -   需要补充 CSS 的相关知识，忘记的太多了。
 -   样式要自己根据 CSS 规则，进行 1 比 1的还原。
 
-123
+
+
+to do list 还有很多地方需要添加：
+
+-   比如弹性界面已适应移动端；
+-   鼠标按住左键，拖动滑过多个 item 后，可以全部选中；
+-   为 item 添加一个时间控件，可以选择持续时间。
+-   界面上可以模仿苹果的待办事项。
+

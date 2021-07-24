@@ -28,16 +28,19 @@ export default class App extends Component {
   };
 
   addItem = (event) => {
+    console.log(event);
     const { todoArr } = this.state;
     let newTodoArr = [{ id: nanoid(), event: event, done: false }, ...todoArr];
     this.setState({ todoArr: newTodoArr });
-    console.log(newTodoArr);
   };
 
   updateItem = (id, done) => {
     const { todoArr } = this.state;
-    let newTodoArr = todoArr.map((cur, index, arr) => {
-      return cur.id !== id;
+    let newTodoArr = todoArr.map((cur) => {
+      if (cur.id === id) {
+        cur.done = !done;
+      }
+      return cur;
     });
     this.setState({ todoArr: newTodoArr });
   };
@@ -45,6 +48,23 @@ export default class App extends Component {
     const { todoArr } = this.state;
     let newTodoArr = todoArr.filter((cur) => {
       return cur.id !== id;
+    });
+    this.setState({ todoArr: newTodoArr });
+  };
+
+  deleteAll = () => {
+    const { todoArr } = this.state;
+    let newTodoArr = todoArr.filter((cur) => {
+      return cur.done === false;
+    });
+    this.setState({ todoArr: newTodoArr });
+  };
+
+  checkedAll = (checked) => {
+    const { todoArr } = this.state;
+    let newTodoArr = todoArr.map((cur) => {
+      if (cur.done !== checked) cur.done = checked;
+      return cur;
     });
     this.setState({ todoArr: newTodoArr });
   };
@@ -64,7 +84,11 @@ export default class App extends Component {
             updateItem={this.updateItem}
             deleteItem={this.deleteItem}
           />
-          <Footer />
+          <Footer
+            todoArr={this.state.todoArr}
+            deleteAll={this.deleteAll}
+            checkedAll={this.checkedAll}
+          />
         </div>
       </div>
     );
